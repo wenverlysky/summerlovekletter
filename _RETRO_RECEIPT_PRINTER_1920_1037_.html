@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RETRO RECEIPT PRINTER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Mitr:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== ผืนงานหลัก 1920 x 1037 (สเกลอัตโนมัติ) ===== -->
+<div class="viewport" id="viewport">
+<div class="stage" id="stage">
+
+  <div class="card">
+    <div class="card-inner">
+
+      <!-- ---------- หัวเรื่อง ---------- -->
+      <header class="title-bar">
+        <h1 class="title">ความมั่นใจ</h1>
+        <p class="subtitle">RETRO RECEIPT PRINTER &middot; เครื่องพิมพ์ใบเสร็จจำลอง</p>
+      </header>
+
+      <!-- ---------- จอกลาง ---------- -->
+      <main class="screen">
+
+        <!-- ===== ซ้าย : แผงควบคุม ===== -->
+        <section class="panel">
+          <h2 class="panel-title">&#9656; INPUT TERMINAL</h2>
+
+          <div class="field">
+            <div class="field-label">
+              <span>ข้อความบนใบเสร็จ</span>
+              <span class="counter"><span id="count">0</span> / 220</span>
+            </div>
+            <textarea id="msg" maxlength="220"
+              placeholder="พิมพ์ข้อความที่อยากให้ปรากฏบนใบเสร็จ...&#10;(Ctrl + Enter เพื่อสั่งพิมพ์)"></textarea>
+          </div>
+
+          <div class="options">
+            <label class="opt"><input type="checkbox" id="sound" checked><span>เสียงเครื่องพิมพ์ 8-bit</span></label>
+            <label class="opt"><input type="checkbox" id="fast"><span>โหมดพิมพ์เร็ว</span></label>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn-print" id="printBtn">PRINT RECEIPT</button>
+            <button class="btn btn-clear" id="clearBtn">CLEAR</button>
+          </div>
+
+          <!-- แผงไฟสถานะ -->
+          <div class="status-bar">
+            <div class="leds">
+              <div class="led-unit"><span class="led on-green" id="ledPower"></span><b>PWR</b></div>
+              <div class="led-unit"><span class="led" id="ledPrint"></span><b>PRINT</b></div>
+              <div class="led-unit"><span class="led" id="ledErr"></span><b>ERR</b></div>
+            </div>
+            <div class="status-readout">
+              <span class="status-text" id="statusText">SYSTEM READY.</span>
+              <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+            </div>
+          </div>
+
+          <p class="note">* หน้านี้เป็นภาพจำลอง ไม่ได้สั่งพิมพ์ออกเครื่องจริง</p>
+        </section>
+
+        <!-- ===== ขวา : ตัวเครื่องพิมพ์ ===== -->
+        <section class="printer-zone">
+          <div class="printer" id="printer">
+
+            <div class="p-top">
+              <div class="mini-screen" id="miniScreen">READY</div>
+              <div class="vents"></div>
+              <div class="knob"></div>
+            </div>
+
+            <div class="p-brand">MODEL&nbsp;RP&ndash;1984</div>
+            <div class="slot-wrap"><div class="slot"></div></div>
+
+            <!-- กระดาษที่เลื่อนออกมา -->
+            <div class="paper-track" id="track">
+              <article class="receipt" id="receipt">
+                <div class="r-head">CONFIDENCE&nbsp;STORE</div>
+                <div class="r-sub">— 24H SELF SERVICE TERMINAL —</div>
+                <div class="r-line"></div>
+                <div class="r-row"><span>DATE</span><span id="rDate">--/--/----</span></div>
+                <div class="r-row"><span>TIME</span><span id="rTime">--:--:--</span></div>
+                <div class="r-row"><span>RECEIPT NO.</span><span id="rNo">#0000</span></div>
+                <div class="r-line"></div>
+                <div class="r-body" id="rBody"></div>
+                <div class="r-line"></div>
+                <div class="r-row total"><span>TOTAL</span><span>PRICELESS</span></div>
+                <div class="barcode"></div>
+                <div class="r-foot">*** THANK YOU ***</div>
+              </article>
+            </div>
+          </div>
+
+          <p class="hint">กระดาษจะเลื่อนออกจากช่องด้านล่างทีละบรรทัด 🧾</p>
+        </section>
+
+      </main>
+
+      <!-- ---------- แถบลูกไม้ ---------- -->
+      <div class="lace"></div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
